@@ -7,15 +7,15 @@
 
 
 ## Section 1:<br/>\- AWS Global Infrastructure\.<br/>\- IAM & AWS CLI\.<br/>\- EC2 Fundamentals Part 1 \(Basic\)\.
-> align=`left`
+> align=`left`,collapsed=`true`
 
 
 ### AWS Global Infrastructure
-> align=`left`
+> align=`left`,collapsed=`true`
 
 
 #### AWS Regions
-> align=`left`
+> align=`left`,collapsed=`true`
 
 
 ##### \- AWS Region là một khu vực địa lý cụ thể chứa nhiều AZs được kết nối với nhau\.<br/>\- Mỗi Region được thiết kế hoàn toàn độc lập với các Region khác để đảm bảo nếu một thảm họa xảy ra ở một khu vực thì sẽ không ảnh hưởng đến<br/>khu vực khác\.
@@ -23,7 +23,7 @@
 
 
 #### AWS Available Zone
-> align=`left`
+> align=`left`,collapsed=`true`
 
 
 ##### \- Một Availability Zone \(AZ\) là một hoặc nhiều trung tâm dữ liệu \(data centers\) riêng biệt<br/>có hạ thầng vật lý độc lập trong một AWS Region\.<br/>\- Các AZ trong cùng một Region được kết nối với nhau thông qua mạng cáp quang chuyên dụng<br/>\- Mỗi Region đều có từ 3 đến 6 AZ\.<br/>\- Các AZ được đặt cách nhau đủ xa để tránh các rủi ro diện rộng như thiên tai hoặc sự cố điện cục bộ\.
@@ -31,7 +31,7 @@
 
 
 #### AWS Data Center
-> align=`left`
+> align=`left`,collapsed=`true`
 
 
 ##### \- AWS Data Center là một cơ sở hạ tầng vật lý chứa hàng nghìn máy chủ \(servers\), hệ thống lưu trữ \(storage\) và thiết bị mạng \(networking\)\.<br/>\- Một Data Center thường chứa từ 50\.000 đến 80\.000 máy chủ\.
@@ -39,7 +39,7 @@
 
 
 #### AWS Edge Locations/Points of Presence
-> align=`left`
+> align=`left`,collapsed=`true`
 
 
 ##### \- Edge Locations là những điểm hạ tầng mạng nhỏ gọn, đặt tại các thành phố lớn và khu vực đông dân cư\.<br/>\- Mục tiêu: Mang nội dung đến gần người dùng nhất có thể\.<br/>\- Points of Presence \(PoP\) là thuật ngữ chung bao gồm cả Edge Locations và Regional Edge Caches\. Chúng không <br/>chạy toàn bộ các AWS Services mà chỉ chạy các services chuyên về mạng và bảo mật\.
@@ -47,17 +47,19 @@
 
 
 ### AWS IAM
-> align=`left`
+> align=`left`,collapsed=`true`
 
 
 #### Khái niệm
+> collapsed=`true`
+
 
 ##### \- AWS IAM là một GLOBAL SERVICE cho phép quản lý quyền truy cập \(access permissions\) và các tài nguyên AWS\. Nó giúp bạn<br/>kiểm soát tập trung:<br/>   ~ Who: Ai có thể truy cập được \(Authentication\)<br/>   ~ What: Họ có thể làm gì với tài nguyên nào \(Authorization\)<br/>\- Nguyên tắc: IAM tuân thủ triết lý: Least Privilege \(Quyền hạn tối thiểu\)\. Nghĩa là mặc định mọi thứ bị từ chối \(Deny\), bạn<br/>chỉ cấp đúng và đủ những quyền cần thiết để thực hiện công việc\.
 > align=`left`
 
 
 #### Kiến trúc
-> align=`left`
+> align=`left`,collapsed=`true`
 
 
 ##### IAM User: Đại diện cho con người hoặc ứng dụng bên ngoài AWS\.
@@ -77,24 +79,34 @@
 
 
 #### IAM Guidelines & Best Practices
+> collapsed=`true`
+
 
 ##### 1\. Không sử dụng Root Account trừ khi setup AWS Account\.<br/>2\. Một người dùng thực tế = một AWS User\.<br/>3\. Phân bổ người dùng \(Users\) vào các nhóm \(Groups\) và cấp quyền cho các nhóm\.<br/>4\. Xây dựng chính sách bảo mật mạnh\.<br/>5\. Sử dụng và thực thi \(enforce\) việc sử dụng MFA\.<br/>6\. Tạo và sử dụng Roles để cấp quyền cho AWS Services\.<br/>7\. Sử dụng Access Keys \(AK\) cho truy cập lập trình \(Programmatic Access\) \(CLI/SDK\)\.<br/>8\. Kiểm tra quyền truy cập của tài khoản bằng cách sử dụng IAM Credentials Report & IAM Access Advisor\.<br/>9\. Không bao giờ chia sẻ IAM user và Access Keys\.
 > align=`left`
 
 
 ### AWS EC2
+> collapsed=`true`
+
 
 #### Khái niệm
+> collapsed=`true`
+
 
 ##### \- Viết tắt của Elastic Compute Cloud\. Là dịch vụ IaaS, một máy chủ ảo chạy trên hạ tầng của AWS cung cấp năng lượng tính toán ảo hóa trên cloud\.<br/>   ~ Elastic \(Đàn hồi\): Có thể tăng, giảm số lợng máy chủ nhanh chóng dựa trên nhu cầu thực tế\.<br/>   ~ Compute \(Tính toán\): Cung cấp CPU, RAM, Storage và Network Connection\.<br/> Bản chất EC sử dụng công nghệ ảo hóa để chia cắt tài nguyên vật lý từ các Data Center thành các Instance nhỏ hơn cho người dùng\.
 > align=`left`
 
 
 #### Kiến trúc
+> collapsed=`true`
+
 
 ##### AMI \(Amazon Machine Image\)
 
 ##### Instance Type \(Loại máy chủ\)
+> collapsed=`true`
+
 
 ###### General Purpose
 
@@ -107,14 +119,20 @@
 ##### EBS \(Elastic Block Store\)
 
 ##### Security Group
+> collapsed=`true`
+
 
 ###### Khái niệm
+> collapsed=`true`
+
 
 ####### \- Là một tường lửa ảo \(virtual firewall\) ở cấp độ instance, đóng vai trò kiểm soát lưu lượng truy cập \(traffic\) đi vào và<br/>đi ra của một hoặc nhiều EC2 Instances<br/>   ~ Phạm vi: Gắn trực tiếp vào Elastic Network Interface \(ENI\) của Instance\.<br/>   ~ Trạng thái: Nếu bạn cho phép một luồng dữ liệu đi vào \(Inbound\), hệ thống sẽ tự động cho phép luồng phản hồi đi ra \(Outbound\)<br/>                 mà không cần cầu hình thêm và ngược lại\.
 > align=`left`
 
 
 ###### Kiến trúc
+> collapsed=`true`
+
 
 ####### Protocol
 
@@ -136,6 +154,30 @@
 > align=`left`
 
 
+##### 1\. Khái niệm: Cho phép thanh toán cho dung lượng tính toán theo giây hoặc giờ mà không cần bất kỳ cam kết dài hạn hoặc thanh toán trước\.<br/>   \- Tính sẵn sàng: Có thể khởi tạo \(provision\) một server ngay lập tức khi cần và hủy bỏ \(terminate\) bất cứ lúc nào\.<br/>   \- Chi phí: Giá được niêm yết cố định và chỉ tính theo thời gian máy thực sự chạy \(Pay for what you use\)<br/>2\. Khi nào sử dụng:<br/>   \- Workloads không dự đoán được: Khi traffic tăng đột ngột, On\-Demand được hệ thống Auto\-Scaling gọi ra để gánh tải tức thì\.<br/>   \- Dev/Test env<br/>   \- Ứng dụng mới: Khi chưa biết ứng dụng sẽ tiêu tốn bao nhiêu tài nguyên, On\-demand là bước đệm để đo lường trước khi chuyển sang các options khác\.
+> align=`left`
+
+
 #### EC2 Reserved Instances
 > align=`left`
 
+
+##### 1\. Khái niệm: RI không phải là một server vật lý mà là một mô hình giảm giá dựa trên cam kết sử dụng\. Cam kết sử dụng một<br/>mức cấu hình cụ thể trong khoảng thời gian nhất định \(1 hoặc 3 năm\) để nhận được giảm giá từ AWS\.<br/>"Tôi sẽ trả tiền cho dung lượng này dù tôi có dùng nó hay không"<br/>2\. Khi nào sử dụng:<br/>   \- Ứng dụng chạy 24/7: Databasse, Backend chính hoặc các service luôn phải duy trì 24/25\.<br/>   \- Workload dự đoán được: Bạn biết chắc rằng trong 1 năm tới, hệ thông cần tối thiểu 10 server để duy trì hoạt động\.<br/>   \- Ngân sách cố định\.<br/>3\. Hình thức thanh toán:<br/>   \- All Upfront: Trả toàn bộ tiền thuê 1\-3 năm ngay\.<br/>   \- Partial Upfront: Trả trước một phần, phần còn lại trả hàng tháng\.<br/>   \- No Upfront: Không trả trước, chỉ cam kết trả hàng tháng\.
+> align=`left`
+
+
+#### EC2 Savings Plans
+
+##### 1\. Khái niệm: Mô hình giảm giá dựa trên cam kết một mức chi tiêu cụ thể \(ví dụ 10$/h\) trong thời hạn 1 năm hoặc 3 năm\.<br/>   \- Cơ chế: Mọi mức sử dụng trong phạm vi cam kết sẽ được tính giá Saving Plan, bất kỳ mức sử dụng nào vượt quá cam kết sẽ được<br/>             tính giá On\-demand\.<br/>2\. Phân loại:<br/>   \- Compute Savings Plan:<br/>     ~ Mức giảm giá: Lên đến 66%<br/>     ~ Phạm vi: Tự động áp dụng cho EC2, AWS Fargate, AWS Lambda\.<br/>   \- EC2 Instance Saving Plan:<br/>     ~ Mức giảm giá: Lên đến 72%<br/>     ~ Phạm vi: Yêu cầu cam kết cho một Instance Family cụ thể trong một Region \(ví dụ: dòng M5 tại Virginia\)\.<br/>     ~ Linh hoạt: Bạn có thể thay đổi kích thước máy \(từ large \-\> xlarge\) hoặc thay đổi từ Linux sang Windows,<br/>                  nhưng không thể thay đổi từ dòng M5 sang dòng C5\.
+> align=`left`
+
+
+#### EC2 Spot Instances
+
+##### 1\. Khai niệm: Spot Instances là lượng tài nguyên dư thừa \(space capacity\) trong các Data Center của AWS\. AWS bán đấu giá chúng<br/>với mức chiết khấu cao, thường rẻ hơn 70\-90% so với giá On\-demand\.<br/>   \- Giá linh hoạt: Giá Spot thay đổi dựa trên cung và cầu của từng loại máy chủ tại từng AZ\.<br/>   \- Cơ chế thu hồi \(Interruption\): AWS có quyền thu hồi server bất cứ lúc nào nếu họ cần lấy tài nguyên cho khách hàng On\-demand\.<br/>     Bạn sẽ nhận được thông báo trước 2 phút trước khi máy bị tắt\.<br/>2\. Khi nào sử dụng:<br/>   \- Batch Processing: Các công việc như encode video, phân tích dữ liệu\.\.\.<br/>   \- CI/CD & Testing Env\.<br/>   \- Web Stateless Application: Đặt Spot Instance sau một Load Balancer\. Khi một server bị thu hồi, traffic tự động chuyển sang các máy còn sống\.<br/>   \- AI/ML Training
+> align=`left`
+
+
+#### EC2 Dedicated Hosts
+
+#### EC2 Capacity Reservations
