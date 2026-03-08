@@ -7,15 +7,15 @@
 
 
 ## Section 1:<br/>\- AWS Global Infrastructure\.<br/>\- IAM & AWS CLI\.<br/>\- EC2 Fundamentals Part 1 \(Basic\)\.
-> align=`left`,collapsed=`true`
+> align=`left`
 
 
 ### AWS Global Infrastructure
-> align=`left`,collapsed=`true`
+> align=`left`
 
 
 #### AWS Regions
-> align=`left`,collapsed=`true`
+> align=`left`
 
 
 ##### \- AWS Region là một khu vực địa lý cụ thể chứa nhiều AZs được kết nối với nhau\.<br/>\- Mỗi Region được thiết kế hoàn toàn độc lập với các Region khác để đảm bảo nếu một thảm họa xảy ra ở một khu vực thì sẽ không ảnh hưởng đến<br/>khu vực khác\.
@@ -23,7 +23,7 @@
 
 
 #### AWS Available Zone
-> align=`left`,collapsed=`true`
+> align=`left`
 
 
 ##### \- Một Availability Zone \(AZ\) là một hoặc nhiều trung tâm dữ liệu \(data centers\) riêng biệt<br/>có hạ thầng vật lý độc lập trong một AWS Region\.<br/>\- Các AZ trong cùng một Region được kết nối với nhau thông qua mạng cáp quang chuyên dụng<br/>\- Mỗi Region đều có từ 3 đến 6 AZ\.<br/>\- Các AZ được đặt cách nhau đủ xa để tránh các rủi ro diện rộng như thiên tai hoặc sự cố điện cục bộ\.
@@ -31,7 +31,7 @@
 
 
 #### AWS Data Center
-> align=`left`,collapsed=`true`
+> align=`left`
 
 
 ##### \- AWS Data Center là một cơ sở hạ tầng vật lý chứa hàng nghìn máy chủ \(servers\), hệ thống lưu trữ \(storage\) và thiết bị mạng \(networking\)\.<br/>\- Một Data Center thường chứa từ 50\.000 đến 80\.000 máy chủ\.
@@ -39,7 +39,7 @@
 
 
 #### AWS Edge Locations/Points of Presence
-> align=`left`,collapsed=`true`
+> align=`left`
 
 
 ##### \- Edge Locations là những điểm hạ tầng mạng nhỏ gọn, đặt tại các thành phố lớn và khu vực đông dân cư\.<br/>\- Mục tiêu: Mang nội dung đến gần người dùng nhất có thể\.<br/>\- Points of Presence \(PoP\) là thuật ngữ chung bao gồm cả Edge Locations và Regional Edge Caches\. Chúng không <br/>chạy toàn bộ các AWS Services mà chỉ chạy các services chuyên về mạng và bảo mật\.
@@ -47,19 +47,17 @@
 
 
 ### AWS IAM
-> align=`left`,collapsed=`true`
+> align=`left`
 
 
 #### Khái niệm
-> collapsed=`true`
-
 
 ##### \- AWS IAM là một GLOBAL SERVICE cho phép quản lý quyền truy cập \(access permissions\) và các tài nguyên AWS\. Nó giúp bạn<br/>kiểm soát tập trung:<br/>   ~ Who: Ai có thể truy cập được \(Authentication\)<br/>   ~ What: Họ có thể làm gì với tài nguyên nào \(Authorization\)<br/>\- Nguyên tắc: IAM tuân thủ triết lý: Least Privilege \(Quyền hạn tối thiểu\)\. Nghĩa là mặc định mọi thứ bị từ chối \(Deny\), bạn<br/>chỉ cấp đúng và đủ những quyền cần thiết để thực hiện công việc\.
 > align=`left`
 
 
 #### Kiến trúc
-> align=`left`,collapsed=`true`
+> align=`left`
 
 
 ##### IAM User: Đại diện cho con người hoặc ứng dụng bên ngoài AWS\.
@@ -79,34 +77,24 @@
 
 
 #### IAM Guidelines & Best Practices
-> collapsed=`true`
-
 
 ##### 1\. Không sử dụng Root Account trừ khi setup AWS Account\.<br/>2\. Một người dùng thực tế = một AWS User\.<br/>3\. Phân bổ người dùng \(Users\) vào các nhóm \(Groups\) và cấp quyền cho các nhóm\.<br/>4\. Xây dựng chính sách bảo mật mạnh\.<br/>5\. Sử dụng và thực thi \(enforce\) việc sử dụng MFA\.<br/>6\. Tạo và sử dụng Roles để cấp quyền cho AWS Services\.<br/>7\. Sử dụng Access Keys \(AK\) cho truy cập lập trình \(Programmatic Access\) \(CLI/SDK\)\.<br/>8\. Kiểm tra quyền truy cập của tài khoản bằng cách sử dụng IAM Credentials Report & IAM Access Advisor\.<br/>9\. Không bao giờ chia sẻ IAM user và Access Keys\.
 > align=`left`
 
 
 ### AWS EC2
-> collapsed=`true`
-
 
 #### Khái niệm
-> collapsed=`true`
-
 
 ##### \- Viết tắt của Elastic Compute Cloud\. Là dịch vụ IaaS, một máy chủ ảo chạy trên hạ tầng của AWS cung cấp năng lượng tính toán ảo hóa trên cloud\.<br/>   ~ Elastic \(Đàn hồi\): Có thể tăng, giảm số lợng máy chủ nhanh chóng dựa trên nhu cầu thực tế\.<br/>   ~ Compute \(Tính toán\): Cung cấp CPU, RAM, Storage và Network Connection\.<br/> Bản chất EC sử dụng công nghệ ảo hóa để chia cắt tài nguyên vật lý từ các Data Center thành các Instance nhỏ hơn cho người dùng\.
 > align=`left`
 
 
 #### Kiến trúc
-> collapsed=`true`
-
 
 ##### AMI \(Amazon Machine Image\)
 
 ##### Instance Type \(Loại máy chủ\)
-> collapsed=`true`
-
 
 ###### General Purpose
 
@@ -119,20 +107,14 @@
 ##### EBS \(Elastic Block Store\)
 
 ##### Security Group
-> collapsed=`true`
-
 
 ###### Khái niệm
-> collapsed=`true`
-
 
 ####### \- Là một tường lửa ảo \(virtual firewall\) ở cấp độ instance, đóng vai trò kiểm soát lưu lượng truy cập \(traffic\) đi vào và<br/>đi ra của một hoặc nhiều EC2 Instances<br/>   ~ Phạm vi: Gắn trực tiếp vào Elastic Network Interface \(ENI\) của Instance\.<br/>   ~ Trạng thái: Nếu bạn cho phép một luồng dữ liệu đi vào \(Inbound\), hệ thống sẽ tự động cho phép luồng phản hồi đi ra \(Outbound\)<br/>                 mà không cần cầu hình thêm và ngược lại\.
 > align=`left`
 
 
 ###### Kiến trúc
-> collapsed=`true`
-
 
 ####### Protocol
 
