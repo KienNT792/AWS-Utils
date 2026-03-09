@@ -7,15 +7,15 @@
 
 
 ## Section 1:<br/>\- AWS Global Infrastructure\.<br/>\- IAM & AWS CLI\.<br/>\- EC2 Fundamentals Part 1 \(Basic\)\.
-> align=`left`
+> align=`left`,collapsed=`true`
 
 
 ### AWS Global Infrastructure
-> align=`left`
+> align=`left`,collapsed=`true`
 
 
 #### AWS Regions
-> align=`left`
+> align=`left`,collapsed=`true`
 
 
 ##### \- AWS Region là một khu vực địa lý cụ thể chứa nhiều AZs được kết nối với nhau\.<br/>\- Mỗi Region được thiết kế hoàn toàn độc lập với các Region khác để đảm bảo nếu một thảm họa xảy ra ở một khu vực thì sẽ không ảnh hưởng đến<br/>khu vực khác\.
@@ -23,7 +23,7 @@
 
 
 #### AWS Available Zone
-> align=`left`
+> align=`left`,collapsed=`true`
 
 
 ##### \- Một Availability Zone \(AZ\) là một hoặc nhiều trung tâm dữ liệu \(data centers\) riêng biệt<br/>có hạ thầng vật lý độc lập trong một AWS Region\.<br/>\- Các AZ trong cùng một Region được kết nối với nhau thông qua mạng cáp quang chuyên dụng<br/>\- Mỗi Region đều có từ 3 đến 6 AZ\.<br/>\- Các AZ được đặt cách nhau đủ xa để tránh các rủi ro diện rộng như thiên tai hoặc sự cố điện cục bộ\.
@@ -31,7 +31,7 @@
 
 
 #### AWS Data Center
-> align=`left`
+> align=`left`,collapsed=`true`
 
 
 ##### \- AWS Data Center là một cơ sở hạ tầng vật lý chứa hàng nghìn máy chủ \(servers\), hệ thống lưu trữ \(storage\) và thiết bị mạng \(networking\)\.<br/>\- Một Data Center thường chứa từ 50\.000 đến 80\.000 máy chủ\.
@@ -39,7 +39,7 @@
 
 
 #### AWS Edge Locations/Points of Presence
-> align=`left`
+> align=`left`,collapsed=`true`
 
 
 ##### \- Edge Locations là những điểm hạ tầng mạng nhỏ gọn, đặt tại các thành phố lớn và khu vực đông dân cư\.<br/>\- Mục tiêu: Mang nội dung đến gần người dùng nhất có thể\.<br/>\- Points of Presence \(PoP\) là thuật ngữ chung bao gồm cả Edge Locations và Regional Edge Caches\. Chúng không <br/>chạy toàn bộ các AWS Services mà chỉ chạy các services chuyên về mạng và bảo mật\.
@@ -47,17 +47,19 @@
 
 
 ### AWS IAM
-> align=`left`
+> align=`left`,collapsed=`true`
 
 
 #### Khái niệm
+> collapsed=`true`
+
 
 ##### \- AWS IAM là một GLOBAL SERVICE cho phép quản lý quyền truy cập \(access permissions\) và các tài nguyên AWS\. Nó giúp bạn<br/>kiểm soát tập trung:<br/>   ~ Who: Ai có thể truy cập được \(Authentication\)<br/>   ~ What: Họ có thể làm gì với tài nguyên nào \(Authorization\)<br/>\- Nguyên tắc: IAM tuân thủ triết lý: Least Privilege \(Quyền hạn tối thiểu\)\. Nghĩa là mặc định mọi thứ bị từ chối \(Deny\), bạn<br/>chỉ cấp đúng và đủ những quyền cần thiết để thực hiện công việc\.
 > align=`left`
 
 
 #### Kiến trúc
-> align=`left`
+> align=`left`,collapsed=`true`
 
 
 ##### IAM User: Đại diện cho con người hoặc ứng dụng bên ngoài AWS\.
@@ -77,24 +79,34 @@
 
 
 #### IAM Guidelines & Best Practices
+> collapsed=`true`
+
 
 ##### 1\. Không sử dụng Root Account trừ khi setup AWS Account\.<br/>2\. Một người dùng thực tế = một AWS User\.<br/>3\. Phân bổ người dùng \(Users\) vào các nhóm \(Groups\) và cấp quyền cho các nhóm\.<br/>4\. Xây dựng chính sách bảo mật mạnh\.<br/>5\. Sử dụng và thực thi \(enforce\) việc sử dụng MFA\.<br/>6\. Tạo và sử dụng Roles để cấp quyền cho AWS Services\.<br/>7\. Sử dụng Access Keys \(AK\) cho truy cập lập trình \(Programmatic Access\) \(CLI/SDK\)\.<br/>8\. Kiểm tra quyền truy cập của tài khoản bằng cách sử dụng IAM Credentials Report & IAM Access Advisor\.<br/>9\. Không bao giờ chia sẻ IAM user và Access Keys\.
 > align=`left`
 
 
 ### AWS EC2
+> collapsed=`true`
+
 
 #### Khái niệm
+> collapsed=`true`
+
 
 ##### \- Viết tắt của Elastic Compute Cloud\. Là dịch vụ IaaS, một máy chủ ảo chạy trên hạ tầng của AWS cung cấp năng lượng tính toán ảo hóa trên cloud\.<br/>   ~ Elastic \(Đàn hồi\): Có thể tăng, giảm số lợng máy chủ nhanh chóng dựa trên nhu cầu thực tế\.<br/>   ~ Compute \(Tính toán\): Cung cấp CPU, RAM, Storage và Network Connection\.<br/> Bản chất EC sử dụng công nghệ ảo hóa để chia cắt tài nguyên vật lý từ các Data Center thành các Instance nhỏ hơn cho người dùng\.
 > align=`left`
 
 
 #### Kiến trúc
+> collapsed=`true`
+
 
 ##### AMI \(Amazon Machine Image\)
 
 ##### Instance Type \(Loại máy chủ\)
+> collapsed=`true`
+
 
 ###### General Purpose
 
@@ -107,14 +119,20 @@
 ##### EBS \(Elastic Block Store\)
 
 ##### Security Group
+> collapsed=`true`
+
 
 ###### Khái niệm
+> collapsed=`true`
+
 
 ####### \- Là một tường lửa ảo \(virtual firewall\) ở cấp độ instance, đóng vai trò kiểm soát lưu lượng truy cập \(traffic\) đi vào và<br/>đi ra của một hoặc nhiều EC2 Instances<br/>   ~ Phạm vi: Gắn trực tiếp vào Elastic Network Interface \(ENI\) của Instance\.<br/>   ~ Trạng thái: Nếu bạn cho phép một luồng dữ liệu đi vào \(Inbound\), hệ thống sẽ tự động cho phép luồng phản hồi đi ra \(Outbound\)<br/>                 mà không cần cầu hình thêm và ngược lại\.
 > align=`left`
 
 
 ###### Kiến trúc
+> collapsed=`true`
+
 
 ####### Protocol
 
@@ -129,11 +147,11 @@
 
 
 ### EC2 Instances Purchasing Options
-> align=`left`
+> align=`left`,collapsed=`true`
 
 
 #### EC2 On\-Demand
-> align=`left`
+> align=`left`,collapsed=`true`
 
 
 ##### 1\. Khái niệm: Cho phép thanh toán cho dung lượng tính toán theo giây hoặc giờ mà không cần bất kỳ cam kết dài hạn hoặc thanh toán trước\.<br/>   \- Tính sẵn sàng: Có thể khởi tạo \(provision\) một server ngay lập tức khi cần và hủy bỏ \(terminate\) bất cứ lúc nào\.<br/>   \- Chi phí: Giá được niêm yết cố định và chỉ tính theo thời gian máy thực sự chạy \(Pay for what you use\)<br/>2\. Khi nào sử dụng:<br/>   \- Workloads không dự đoán được: Khi traffic tăng đột ngột, On\-Demand được hệ thống Auto\-Scaling gọi ra để gánh tải tức thì\.<br/>   \- Dev/Test env<br/>   \- Ứng dụng mới: Khi chưa biết ứng dụng sẽ tiêu tốn bao nhiêu tài nguyên, On\-demand là bước đệm để đo lường trước khi chuyển sang các options khác\.
@@ -141,7 +159,7 @@
 
 
 #### EC2 Reserved Instances
-> align=`left`
+> align=`left`,collapsed=`true`
 
 
 ##### 1\. Khái niệm: RI không phải là một server vật lý mà là một mô hình giảm giá dựa trên cam kết sử dụng\. Cam kết sử dụng một<br/>mức cấu hình cụ thể trong khoảng thời gian nhất định \(1 hoặc 3 năm\) để nhận được giảm giá từ AWS\.<br/>"Tôi sẽ trả tiền cho dung lượng này dù tôi có dùng nó hay không"<br/>2\. Khi nào sử dụng:<br/>   \- Ứng dụng chạy 24/7: Databasse, Backend chính hoặc các service luôn phải duy trì 24/25\.<br/>   \- Workload dự đoán được: Bạn biết chắc rằng trong 1 năm tới, hệ thông cần tối thiểu 10 server để duy trì hoạt động\.<br/>   \- Ngân sách cố định\.<br/>3\. Hình thức thanh toán:<br/>   \- All Upfront: Trả toàn bộ tiền thuê 1\-3 năm ngay\.<br/>   \- Partial Upfront: Trả trước một phần, phần còn lại trả hàng tháng\.<br/>   \- No Upfront: Không trả trước, chỉ cam kết trả hàng tháng\.
@@ -149,17 +167,99 @@
 
 
 #### EC2 Savings Plans
+> collapsed=`true`
+
 
 ##### 1\. Khái niệm: Mô hình giảm giá dựa trên cam kết một mức chi tiêu cụ thể \(ví dụ 10$/h\) trong thời hạn 1 năm hoặc 3 năm\.<br/>   \- Cơ chế: Mọi mức sử dụng trong phạm vi cam kết sẽ được tính giá Saving Plan, bất kỳ mức sử dụng nào vượt quá cam kết sẽ được<br/>             tính giá On\-demand\.<br/>2\. Phân loại:<br/>   \- Compute Savings Plan:<br/>     ~ Mức giảm giá: Lên đến 66%<br/>     ~ Phạm vi: Tự động áp dụng cho EC2, AWS Fargate, AWS Lambda\.<br/>   \- EC2 Instance Saving Plan:<br/>     ~ Mức giảm giá: Lên đến 72%<br/>     ~ Phạm vi: Yêu cầu cam kết cho một Instance Family cụ thể trong một Region \(ví dụ: dòng M5 tại Virginia\)\.<br/>     ~ Linh hoạt: Bạn có thể thay đổi kích thước máy \(từ large \-\> xlarge\) hoặc thay đổi từ Linux sang Windows,<br/>                  nhưng không thể thay đổi từ dòng M5 sang dòng C5\.
 > align=`left`
 
 
 #### EC2 Spot Instances
+> collapsed=`true`
+
 
 ##### 1\. Khai niệm: Spot Instances là lượng tài nguyên dư thừa \(space capacity\) trong các Data Center của AWS\. AWS bán đấu giá chúng<br/>với mức chiết khấu cao, thường rẻ hơn 70\-90% so với giá On\-demand\.<br/>   \- Giá linh hoạt: Giá Spot thay đổi dựa trên cung và cầu của từng loại máy chủ tại từng AZ\.<br/>   \- Cơ chế thu hồi \(Interruption\): AWS có quyền thu hồi server bất cứ lúc nào nếu họ cần lấy tài nguyên cho khách hàng On\-demand\.<br/>     Bạn sẽ nhận được thông báo trước 2 phút trước khi máy bị tắt\.<br/>2\. Khi nào sử dụng:<br/>   \- Batch Processing: Các công việc như encode video, phân tích dữ liệu\.\.\.<br/>   \- CI/CD & Testing Env\.<br/>   \- Web Stateless Application: Đặt Spot Instance sau một Load Balancer\. Khi một server bị thu hồi, traffic tự động chuyển sang các máy còn sống\.<br/>   \- AI/ML Training
 > align=`left`
 
 
-#### EC2 Dedicated Hosts
+#### EC2 Dedicated
+> collapsed=`true`
+
+
+##### EC2 Dedicated Host: Là một Physical Server hoàn toàn dành riêng cho việc sử dụng của bạn\. Dedicated Host cho phép bạn nhìn thấy và can thiệp sâu<br/>vào cấu hinh phần cứng\.<br/>   \- Kiểm soát: Có quyền truy cập vào các thông tin như số lượng socket, core vật lý của server\.<br/>   \- Tính cố định: Có thể chọn đặt các Instance của mình lên một server vật lý cụ thể và giữ chúng ở đó \(Host Affinity\)\.<br/>\-\> Dedicated Host giải quyết vấn đề về Tuân thủ \(Compliance\) và Chi phí bản quyền phần mềm \(Licensing\)\.
+> align=`left`
+
+
+##### EC2 Dedicated Instance: Là các EC2 Instance chạy trên phần cứng vật lý dành riêng cho một khácg hàng duy nhất\. Mặc dù bạn vẫn sử dụng các công cụ<br/>quản lý ảo hoá của AWS nhưng ở lớp vật lý \(physical layer\), máy chủ của bạn vẫn được cách ly hoàn toàn với các instance của các tài khoản AWS khác\.<br/>   \- Singel Tenant: Chỉ có các Instance thuộc tài khoản của bạn \(hoặc cùng một tổ chức\) mới được nằm trên máy chủ vật lý đó\.<br/>   \- Tính riêng tư: Loại bỏ hoàn toàn rủi ro "Neighbors"
+> align=`left`
+
 
 #### EC2 Capacity Reservations
+> collapsed=`true`
+
+
+##### 1\. Khái niệm: Là tính năng cho phép bạn đặt trước năng lượng tính toán cho các EC2 Instance trong một AZ cụ thể vào một thời điểm cụ thể\.<br/>   \- Tính cam kết của AWS: Khi đã tạo Reservation, AWS đảm bảo rằng tài nguyên đó sẽ luôn sẵn sàng cho bạn\. <br/>   \- Tính thanh toán: Tính phí ngay khi Reservation được khởi tạo, bất kể bạn có đang thực sự chạy Instance trên đó hay chưa\.<br/>2\. Khi nào cần "Giữ chỗ"<br/>   \- Sự kiện cao điểm\.<br/>   \- Khôi phục sau thảm hoạ \(Disaster Recovery\)<br/>   \- Workload quan trọng không thể gián đoạn\.
+> align=`left`
+
+
+### EC2 \- Solution Architect Associate Level
+
+#### Networking
+> collapsed=`true`
+
+
+##### VPC \(Virtual Private Cloud\): Mạng riêng ảo của bạn trên AWS\.
+
+##### Subnet \(Public/Private\): Phân đoạn mạng bên trong VPC\.
+
+##### Internet Gateway \(IGW\): Cổng kết nối VPC với Internet
+
+##### NAT Gateway: Cho phép các taài nguyên trong Private Subnet truy cập Internet nhưng không cho chiều ngược lại
+
+##### VPC Peering: Kết nối 2 VPC với nhau\.
+
+##### VPC Endpoints \(Interface/Gateway\): Kết nối riêng tư đến các AWS Service mà không cần đi quan Internet\.
+
+##### Direct Connect: Đường truyền vật lý riêng biệt từ Data Center của bạn đến AWS\.
+
+##### Site\-to\-site VPN: Kết nối bảo mật qua Internet giữa On\-Premise và VPC\.
+
+##### Route S3: Dịch vụ DNS \(Hệ thống phân giải tên miền\)\.
+
+##### CloudFront: Mạng lưới phân phối nội dung \(CDN\)\.
+
+#### Compute
+
+##### AMI \(Amazone Machine Image\): FIle ghost/khuôn mẫu để tạo máy chủ
+
+###### 1\. Khái niệm: AMI là một đơn vị đóng gói chứa mọi thông tin cần thiết để khởi chạy một EC2 Instance\. Nó giống như 1 bản "snapshot" hoặc "template"<br/>bào gồm:<br/>   \- Root Volume Template: Hệ điều hành, các ứng dụng và cấu hình hệ thống\.<br/>   \- Launch Permission: Quyền hạn kiểm soát ai có thể sử dụng AMI này để tạo máy chủ\.<br/>   \- Block Device Mapping: Quy định các ổ cứng \(EBS Volume\) nào sẽ được gắn vào máy khi khơi động\.
+> align=`left`
+
+
+###### 2\. Phân loại:<br/>   \- Quick Start AMIs: Các bản OS phổ biến do AWS hoặc các đối tác tin cậy cung cấp\.<br/>   \- AWS Marketplace AMIs: Các bản cài sẵn phần mềm bên thứ 3 đã được tối ưu hoá\.<br/>   \- My AMIs: AMI do chính bạn tạo ra từ những máy chủ đã cấu hình sẵn của mình\.<br/>   \- Community AMIs: Các bản do cộng đồng chia sẻ \(Cần cẩn trọng về bảo mật khi sử dụng\)\.
+> align=`left`
+
+
+###### Khi muốn câu hình một máy chủ lúc khởi động, có 2 lựa chọn chính:<br/>
+> mmd.image=`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`
+
+
+##### Instance Type: Các dòng cấu hình máy chủ \(t3, m5, c5\.\.\.\)
+
+##### Auto Scaling Group \(ASG\): Tự động tăng/giảmh số lượng server theo tải\.
+
+##### Elastic Load Balancer \(ALB, NLB, GWLB\): Bộ cân bằng tải\.
+
+##### Lambda: Dịch vụ chạy code không cần quản lý server \(serverless\)\.
+
+##### ECS/EKS: Các dịch vụ quả lý Container \(Docker/Kubernetes\)\.
+
+##### Fargate: Chạy Container theo mô hình Serverless\.
+
+#### Storage
+
+#### Database
+
+#### Security & Identify
+
+#### Advanced Concepts
