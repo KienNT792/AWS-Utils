@@ -1,20 +1,18 @@
 package com.aws.service.impl;
 
+import com.aws.config.S3Config;
 import com.aws.entity.Attachment;
 import com.aws.repository.AttachmentRepository;
 import com.aws.service.AttachmentService;
 import com.aws.service.TranscribeService;
 import com.aws.utils.Constant;
-import jakarta.servlet.http.HttpSession;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import software.amazon.awssdk.core.sync.RequestBody;
-import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.GetObjectRequest;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
-import software.amazon.awssdk.services.s3.presigner.S3Presigner;
+import software.amazon.awssdk.services.s3.model.PutObjectResponse;
 import software.amazon.awssdk.services.s3.presigner.model.GetObjectPresignRequest;
 
 import java.io.IOException;
@@ -23,22 +21,12 @@ import java.time.Duration;
 import java.util.UUID;
 
 @Service
+@RequiredArgsConstructor
 public class AttachmentServiceImpl implements AttachmentService {
 
-    @Value("${aws.s3.bucket.name}")
-    private String bucketName;
-
-    @Autowired
-    private AttachmentRepository repository;
-
-    @Autowired
-    private S3Client s3Client;
-
-    @Autowired
-    private S3Presigner s3Presigner;
-
-    @Autowired
-    private TranscribeService transcribeService;
+    private final AttachmentRepository repository;
+    private final S3Config s3Config;
+    private final TranscribeService transcribeService;
 
     @Override
     public Attachment uploadFile(MultipartFile file) throws IOException {
@@ -53,12 +41,12 @@ public class AttachmentServiceImpl implements AttachmentService {
 
         // Upload file lên S3
         PutObjectRequest putRequest = PutObjectRequest.builder()
-                .bucket(bucketName)
+                .bucket(s3Config.getBucketName())
                 .key(s3Key)
                 .contentType(mimeType)
                 .build();
 
-        s3Client.putObject(putRequest, RequestBody.fromBytes(file.getBytes()));
+        PutObjectResponse putObjectResponse = s3Config.s3Client().putObject(putRequest, RequestBody.fromBytes(file.getBytes()));
 
         Attachment attachment = new Attachment();
         attachment.setFileId(fileUUID);
@@ -96,7 +84,7 @@ public class AttachmentServiceImpl implements AttachmentService {
         String s3Key = fileTypeFolder + "/" + attachment.getFileId() + getFileExtension(attachment.getFileName());
 
         GetObjectRequest getObjectRequest = GetObjectRequest.builder()
-                .bucket(bucketName)
+                .bucket(s3Config.getBucketName())
                 .key(s3Key)
                 .build();
 
@@ -105,7 +93,7 @@ public class AttachmentServiceImpl implements AttachmentService {
                 .getObjectRequest(getObjectRequest)
                 .build();
 
-        URL presignedUrl = s3Presigner.presignGetObject(presignRequest).url();
+        URL presignedUrl = s3Config.s3Presigner().presignGetObject(presignRequest).url();
         return presignedUrl.toString();
     }
 
