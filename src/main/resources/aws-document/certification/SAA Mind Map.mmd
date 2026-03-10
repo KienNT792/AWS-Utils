@@ -7,11 +7,11 @@
 
 
 ## Section 1:<br/>\- AWS Global Infrastructure\.<br/>\- IAM & AWS CLI\.<br/>\- EC2 Fundamentals Part 1 \(Basic\)\.
-> align=`left`
+> align=`left`,collapsed=`true`
 
 
 ### AWS Global Infrastructure
-> align=`left`
+> align=`left`,collapsed=`true`
 
 
 #### AWS Regions
@@ -203,10 +203,12 @@
 
 
 ### EC2 \- Solution Architect Associate Level
-> align=`left`
+> align=`left`,collapsed=`true`
 
 
 #### Networking
+> collapsed=`true`
+
 
 ##### VPC \(Virtual Private Cloud\): Mạng riêng ảo của bạn trên AWS\.
 
@@ -229,8 +231,12 @@
 ##### CloudFront: Mạng lưới phân phối nội dung \(CDN\)\.
 
 #### Compute
+> collapsed=`true`
+
 
 ##### AMI \(Amazone Machine Image\): FIle ghost/khuôn mẫu để tạo máy chủ
+> collapsed=`true`
+
 
 ###### 1\. Khái niệm: AMI là một đơn vị đóng gói chứa mọi thông tin cần thiết để khởi chạy một EC2 Instance\. Nó giống như 1 bản "snapshot" hoặc "template"<br/>bào gồm:<br/>   \- Root Volume Template: Hệ điều hành, các ứng dụng và cấu hình hệ thống\.<br/>   \- Launch Permission: Quyền hạn kiểm soát ai có thể sử dụng AMI này để tạo máy chủ\.<br/>   \- Block Device Mapping: Quy định các ổ cứng \(EBS Volume\) nào sẽ được gắn vào máy khi khơi động\.
 > align=`left`
@@ -257,6 +263,8 @@
 ##### Fargate: Chạy Container theo mô hình Serverless\.
 
 #### Storage
+> collapsed=`true`
+
 
 ##### EBS \(Elastic Block Store\): Ổ cứng gắn trực tiếp vào EC2\.
 
@@ -271,6 +279,8 @@
 ##### Instance Storage: Ổ cứng vật lý tạm thời gắn vào server \(mất dữ liệu khi tắt máy\)\.
 
 #### Database
+> collapsed=`true`
+
 
 ##### Aurora: DB độc quyền của AWS, tương thích với MySQL, Postgres nhưng hiệu năng cao hơn
 
@@ -281,6 +291,8 @@
 ##### Redshift: Kho dữ liệu lớn \(Data Warehouse\) để phân tích \(OLAP\)
 
 #### Security & Identify
+> collapsed=`true`
+
 
 ##### Security Group: Firewall cấp độ Instance \(Stateful\)
 
@@ -293,10 +305,14 @@
 ##### AWS Shield/WAF: Chống tấn công DDoS và tấn công tầng Web \(SQL Injection, XSS\)\.
 
 #### Advanced Concepts
+> collapsed=`true`
+
 
 ##### ENI \(Elastic Network Interface\): Card mạng ảo trên EC2\.
 
 ##### Placement Group \(Cluster/Spread/Partition\): Cách sắp xếp vị trí vật lý của các EC2 \(gần nhau để nhanh, xa nhau để an toàn\)\.
+> collapsed=`true`
+
 
 ###### Cluster Placement Group: Đặt tất cả các Instance vào trong cùng mt Network Hop \(thường là cùng một Rack<br/>hoặc cùng một hàng máy chủ\) trong cùng một AZ\.<br/>   \- Ưu điểm: Mang lại tốc độ mạng cực cao và độ trễ thấp nhất có thể\.<br/>   \- Rủi ro: Nếu Rack đó bị hỏng điện hoặc lỗi phần cứng, tất cả các instance trong group sẽ sập \(Single point of Failure\)\.<br/>   \- Sử dụng cho: Các tác vụ tính toán hiệu năng cao \(HPC\), phân tích dữ liệu khổng lồ cần các nói chuyện với nhau liên tục<br/>                  hoặc các ứng dụng nhạy cảm với độ trễ mạng
 > align=`left`
@@ -319,14 +335,14 @@
 ##### EventBridge: Hệ thống điều hướng sự kiện giữa các dịch vụ
 
 ### EC2 Instance Storage
-> align=`left`,collapsed=`true`
+> align=`left`
 
 
 #### EBS Volume
 > collapsed=`true`
 
 
-##### 1\. Định nghĩa: Amazone EBS là dịch vụ cung cấp các khối lưu trữ \(block\-level storage\) hiệu năng cao, bền vững để sử dụng với EC2\.<br/>   \- Bản chất kỹ thuật: EBS không phải là ổ cứng cắm trực tiếp vào server vật lý\. Nó là một ổ cứng mạng \(Network Attached Storage\) kết nới<br/>                        EC2 thông qua hạ tầng mạng riêng tốc độ cao của AWS\.<br/>   \- Tính bền vững: Dữ liệu trên EBS độc lập với vòng đời của EC2\. Nếu EC2 bị sập hoặc tắt, dữ liệu trên EBS vẫn còn\.<br/>   \- Mỗi EBS chỉ có thể được gắn vào một instance tại một thời điểm \(ngoại trừ io1/io2\) và được khóa vào một AZ\.<br/>   \- Mặc định khi tạo EC2 Instance, nó sẽ tự động gắn một EBS Volume\. Điều này được gọi là Root EBS Volume\.
+##### 1\. Định nghĩa: Amazon EBS là dịch vụ cung cấp các khối lưu trữ \(block\-level storage\) hiệu năng cao, bền vững để sử dụng với EC2\.<br/>   \- Bản chất kỹ thuật: EBS không phải là ổ cứng cắm trực tiếp vào server vật lý\. Nó là một ổ cứng mạng \(Network Attached Storage\) kết nới<br/>                        EC2 thông qua hạ tầng mạng riêng tốc độ cao của AWS\.<br/>   \- Tính bền vững: Dữ liệu trên EBS độc lập với vòng đời của EC2\. Nếu EC2 bị sập hoặc tắt, dữ liệu trên EBS vẫn còn\.<br/>   \- Mỗi EBS chỉ có thể được gắn vào một instance tại một thời điểm \(ngoại trừ io1/io2\) và được khóa vào một AZ\.<br/>   \- Mặc định khi tạo EC2 Instance, nó sẽ tự động gắn một EBS Volume\. Điều này được gọi là Root EBS Volume\.
 > align=`left`
 
 
@@ -389,9 +405,15 @@
 ##### EBS Encryption
 
 #### EC2 Instance Store
-> collapsed=`true`
 
+##### 1\. Định nghĩa: EC2 Instance Store cung cấp bộ nhớ lưu trũ tạm thời ở cấp độ khối \(block\-level\)\. Khác với EBS, dữ liệu ở đây nằm trên các <br/>đĩa cứng vật lý gắn trực tiếp vào máy chủ Host\.<br/>   \- Tốc độ: Vì không phải truyền qua mạng, nó mang lại hiệu năng I/O cực cao, latency thấp và băng thông lớn nhất\.<br/>   \- Tính tạm thời: Dữ liệu sẽ bị xoá vĩnh viễn nếu:<br/>     ~ Instance bị Stop<br/>     ~ Instance bị Terminal<br/>     ~ Phần cứng vật lý của máy chủ Host gặp sự cố\.<br/>   \- Dữ liệu được bảo toàn khi Reboot OS\.<br/>2\. Tại sao dùng ổ cứng 'dễ mất dữ liệu':<br/>   \- Instance Store không phải để lưu trữ lâu dài, mà để tận dụng tốc độ xử lý thô\.<br/>   \- AWS không hỗ trợ Snapshot cho Instance Store\.<br/>3\. Ví dụ triển khai:<br/>   \- Caching<br/>   \- Scratch Space: Xử lý hậu kỳ video, render 3D\.<br/>   \- NoSQL DB
+> align=`left`
 
-##### 1\. Định ng
 
 #### Elastic File System \(EFS\)
+
+##### EFS Standard
+
+##### EFS IA
+
+##### EFS Archive
