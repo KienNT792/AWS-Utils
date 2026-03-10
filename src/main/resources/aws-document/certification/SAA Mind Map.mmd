@@ -143,7 +143,7 @@
 ##### Network \(VPC\)
 
 ## Section 2:<br/>\- EC2 Fundamentals Part 2 \(EC2 Instances Purchasing Options\)\.<br/>\- EC2 \- Solutions Architect Associate Level\.<br/>\- EC2 Instance Storage
-> align=`left`
+> align=`left`,collapsed=`true`
 
 
 ### EC2 Instances Purchasing Options
@@ -335,7 +335,7 @@
 ##### EventBridge: Hệ thống điều hướng sự kiện giữa các dịch vụ
 
 ### EC2 Instance Storage
-> align=`left`
+> align=`left`,collapsed=`true`
 
 
 #### EBS Volume
@@ -405,15 +405,23 @@
 ##### EBS Encryption
 
 #### EC2 Instance Store
+> collapsed=`true`
+
 
 ##### 1\. Định nghĩa: EC2 Instance Store cung cấp bộ nhớ lưu trũ tạm thời ở cấp độ khối \(block\-level\)\. Khác với EBS, dữ liệu ở đây nằm trên các <br/>đĩa cứng vật lý gắn trực tiếp vào máy chủ Host\.<br/>   \- Tốc độ: Vì không phải truyền qua mạng, nó mang lại hiệu năng I/O cực cao, latency thấp và băng thông lớn nhất\.<br/>   \- Tính tạm thời: Dữ liệu sẽ bị xoá vĩnh viễn nếu:<br/>     ~ Instance bị Stop<br/>     ~ Instance bị Terminal<br/>     ~ Phần cứng vật lý của máy chủ Host gặp sự cố\.<br/>   \- Dữ liệu được bảo toàn khi Reboot OS\.<br/>2\. Tại sao dùng ổ cứng 'dễ mất dữ liệu':<br/>   \- Instance Store không phải để lưu trữ lâu dài, mà để tận dụng tốc độ xử lý thô\.<br/>   \- AWS không hỗ trợ Snapshot cho Instance Store\.<br/>3\. Ví dụ triển khai:<br/>   \- Caching<br/>   \- Scratch Space: Xử lý hậu kỳ video, render 3D\.<br/>   \- NoSQL DB
 > align=`left`
 
 
 #### Elastic File System \(EFS\)
+> collapsed=`true`
+
 
 ##### EFS Standard
 
 ##### EFS IA
 
 ##### EFS Archive
+
+## Section 3:<br/>\- High Availability & Scalability
+> align=`left`
+
