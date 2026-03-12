@@ -3,7 +3,7 @@
 ---
 
 # AWS Solutions Architect Associate
-> align=`left`,mmd.emoticon=`tree`
+> align=`left`,collapsed=`true`,mmd.emoticon=`tree`
 
 
 ## Section 1:<br/>\- AWS Global Infrastructure\.<br/>\- IAM & AWS CLI\.<br/>\- EC2 Fundamentals Part 1 \(Basic\)\.
@@ -425,3 +425,61 @@
 ## Section 3:<br/>\- High Availability & Scalability
 > align=`left`
 
+
+### Scalability
+
+#### Vertical Scalability
+
+##### 1\. Khái niệm: Vertical Scalability là quá trình tăng cường sức mạnh cho Single Instance bằng cách bổ sung thêm phần cứng<br/>2\. Khi nào nên chọn Vertical Scalability:<br/>   \- Non\-distribution application\.<br/>   \- Quản trị đơn giản<br/>   \- Dev/Test Env
+> align=`left`
+
+
+#### Horizontal Scalability
+
+##### 1\. Khái niệm: Horizontal Scalability là khả năng tăng cường sức mạnh hệ thống bằng cách bổ sung thêm nhiều Instances\.<br/>2\. Các thành phần bắt buộc:<br/>   \- Load Balancer \(ELB\): Điểm đầu mối trực tiếp nhận traffic và phân phối đều cho các máy chủ mới\.<br/>   \- Auto Scaling Group \(ASG\): Tự động ra quyết định khi nào cần thêm máy, khi nào cần bớt máy dựa trên các metrics của CPU, RAM, Requests\.<br/>   \- Stateless Architecture: Các máy chủ không nên lưu dữ liệu người dùng \(như session\) trực tiếp trên ổ cứng cục bộ, vì request tiếp<br/>                             theo của người dùng có thể bay sang một máy chủ hoàn toàn khác\.
+> align=`left`
+
+
+### High Availability
+
+#### 1\. Khái niệm: HA là khả năng một hệ thống có thể chạy liên tục, không bị downtime trong một khoảng thời gian dài, ngay cả khi nhiều thành phần<br/>              gặp dự cố<br/>   \- Mục tiêu: Giảm thiểu tối đa thời gian downtime\.<br/>   \- Nguyên tắc\. "No Single Point of Failure"\.<br/>2\. Yếu tố cần đảm bảo:<br/>   \- Redundancy \(Sự dư thừa\): Bạn phải có các thành phần dự phòng\. Bạn cần ít nhất 2 DB chạy song song hoặc 1 bản chính là 1 bản dự phòng\.<br/>   \- Monitoring \(Giám sát\): Bạn phải biết ngay lập tức khi nào một thành phần bị hỏng\. Nếu không có giám sát, sự dư thừa trở nên vô nghĩa\.<br/>   \- Failover \(Cơ chế chuyển vùng sự cố\): Khi A hỏng, hệ thống tự động chuyển hướng sang B đang hoạt động mà người dùng không hề nhận ra\.<br/>3\. Triển khai HA trên AWS:<br/>   \- Kiến trúc Single\-AZ: Chạy 2 server nhưng cùng nằm trong 1 data center\. Nếu data center bị sập \-\> Hệ thống sập \-\> Không phải HA\.<br/>   \- Kiến trúc Multi\-AZ: Chạy server ở AZ\-A và AZ\-B, Nếu 1 trong 2 gặp sự cố, AZ còn lại vẫn hoạt động bình thường \-\> Đây là HA\.<br/> 4\. Các Services hỗ trợ HA:<br/>   \- ELB: Tự động điều hướng sang AZ còn sống\.<br/>   \- ASG: Tựu động tạo lại máy chủ mới ở AZ khác nếu máy ở AZ cũ bị hỏng\.<br/>   \- RDS Multi\-AZ: Tự động đồng bộ dữ liệu và chuyển đổi node chính khi có sự cố\.
+> align=`left`
+
+
+### Elastic Load Balancer
+
+#### Tổng quan về Load Balancer<br/>1\. Khái niệm: Load Balancer là một thiết bị hoặc 1 phần mềm đóng vai trò là điểm tiếp nhận duy nhất cho các truy cập cả người dùng\. Sau đó, nó sẽ phân phối<br/>              các truy cập này đến một nhóm máy chủ ở phía sau \(Backend Server Pool\)\.<br/>   \- Mục tiêu: Đảm bảo không có máy chủ nào quá tải trong khi các máy chủ khác rảnh rỗi\.<br/>   \- Điểm truy cập dy nhất: Người dùng chỉ cần kết nối tới 1 địa chỉ IP hoặc tên miền duy nhất của LB, thay vì phải biết địa chỉ của từng máy chủ chủ\.<br/><br/>2\. Tại sao lại cần LB?<br/>   \- HA: Nếu 1 server bị hỏng, LB sẽ nhận biết và tự động ngừng gửi khách đến server đó và điều phối qua các server còn sống\.<br/>   \- Scalability: Có thể dễ dàng thêm/bớt server vào hệ thống mà người dùng không hề biết và không bị gián đoạn dịch vụ\.<br/>   \- Security: LB che giấu địa chỉ IP thật của các máy chủ bên trong, giúp ngăn chặn các cuộc tấn công trực tiếp\.<br/>   \- Health Checks: LB liên tục request đến các máy chủ, nếu một máy chủ phản hồi chậm hoặc báo lỗi, nó sẽ bị tạm dừng nhận việc\.<br/><br/>3\. Các thức hoạt động:<br/>   \- Round Robin: Gửi lần lượt cho từng máy chủ\.<br/>   \- Least Connection: Gửi đến máy chủ nào đang có ít kết nối đang xử lý nhất\.<br/>   \- IP Hash: Dựa vào IP người dùng để quyết định máy chủ\.
+> align=`left`
+
+
+#### Load Balancer trên AWS\.
+
+##### Thành phần cốt lõi
+
+###### Listeners: Quy định giao thức và port mà LB lắng nghe \(VD: HTTP trên cổng 80 hoặc HTTPS trên cổng 443\)\.
+
+###### Target Group: Một nhóm các tài nguyên \(như EC2, Lambda, IP\) và ELB sẽ chuyển traffic tới\.
+
+###### Rules: Các quy tắc quyết định request nào sẽ đi vào Target Group nào\.
+
+##### Phân Loại
+
+###### Application Load Balancer \(ALB\)
+
+####### \- Hoạt động tại: Tầng 7 \(Application Layer \- HTTP/HTTPS\)<br/>\- Đặc điểm: Có thể đọc được nội dung gói tin\. Nó có thể điều hướng dựa trên URL Path, hostname, Query String, Headers<br/>\- Phù hợp: Ứng dụng web hiện tại, Microservices, Container \(Docker/ECS\)\.
+> align=`left`
+
+
+###### Network Load Balancer \(NLB\)
+
+####### \- Hoạt động tại: Tầng 4 \(Transport Layer \- TCP/UDP/TLS\)\.<br/>\- Đặc điểm: Cực nhanh, độ trễ cực thấp \(ms\)\. Có thể xử lý hàng triệu request/s và hỗ trợ Static IP\.<br/>\- Phù hợp: Game Online, Ứng dụng tài chính, Livestream hoặc khi cần IP tĩnh để cấu hình Firewall phía khách hàng\.
+> align=`left`
+
+
+###### Gateway Load Balancer \(GWLB\)
+
+####### \- Hoạt động tại: Tầng 3 \(Network Layer\)\.<br/>\- Đặc điểm: Dùng để triển khai và quản lý các thiết bị bảo mật bên thứ 3\.<br/>\- Phù hợp: Khi bạn muốn kiểm soát toàn bộ traffic ra/vào khỏi VPC qua một lớp bảo mật chuyên dụng\.
+> align=`left`
+
+
+### Auto Scaling Group
