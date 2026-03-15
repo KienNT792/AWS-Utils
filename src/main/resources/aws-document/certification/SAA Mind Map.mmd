@@ -427,20 +427,28 @@
 
 
 ### Scalability
+> collapsed=`true`
+
 
 #### Vertical Scalability
+> collapsed=`true`
+
 
 ##### 1\. Khái niệm: Vertical Scalability là quá trình tăng cường sức mạnh cho Single Instance bằng cách bổ sung thêm phần cứng<br/>2\. Khi nào nên chọn Vertical Scalability:<br/>   \- Non\-distribution application\.<br/>   \- Quản trị đơn giản<br/>   \- Dev/Test Env
 > align=`left`
 
 
 #### Horizontal Scalability
+> collapsed=`true`
+
 
 ##### 1\. Khái niệm: Horizontal Scalability là khả năng tăng cường sức mạnh hệ thống bằng cách bổ sung thêm nhiều Instances\.<br/>2\. Các thành phần bắt buộc:<br/>   \- Load Balancer \(ELB\): Điểm đầu mối trực tiếp nhận traffic và phân phối đều cho các máy chủ mới\.<br/>   \- Auto Scaling Group \(ASG\): Tự động ra quyết định khi nào cần thêm máy, khi nào cần bớt máy dựa trên các metrics của CPU, RAM, Requests\.<br/>   \- Stateless Architecture: Các máy chủ không nên lưu dữ liệu người dùng \(như session\) trực tiếp trên ổ cứng cục bộ, vì request tiếp<br/>                             theo của người dùng có thể bay sang một máy chủ hoàn toàn khác\.
 > align=`left`
 
 
 ### High Availability
+> collapsed=`true`
+
 
 #### 1\. Khái niệm: HA là khả năng một hệ thống có thể chạy liên tục, không bị downtime trong một khoảng thời gian dài, ngay cả khi nhiều thành phần<br/>              gặp dự cố<br/>   \- Mục tiêu: Giảm thiểu tối đa thời gian downtime\.<br/>   \- Nguyên tắc\. "No Single Point of Failure"\.<br/>2\. Yếu tố cần đảm bảo:<br/>   \- Redundancy \(Sự dư thừa\): Bạn phải có các thành phần dự phòng\. Bạn cần ít nhất 2 DB chạy song song hoặc 1 bản chính là 1 bản dự phòng\.<br/>   \- Monitoring \(Giám sát\): Bạn phải biết ngay lập tức khi nào một thành phần bị hỏng\. Nếu không có giám sát, sự dư thừa trở nên vô nghĩa\.<br/>   \- Failover \(Cơ chế chuyển vùng sự cố\): Khi A hỏng, hệ thống tự động chuyển hướng sang B đang hoạt động mà người dùng không hề nhận ra\.<br/>3\. Triển khai HA trên AWS:<br/>   \- Kiến trúc Single\-AZ: Chạy 2 server nhưng cùng nằm trong 1 data center\. Nếu data center bị sập \-\> Hệ thống sập \-\> Không phải HA\.<br/>   \- Kiến trúc Multi\-AZ: Chạy server ở AZ\-A và AZ\-B, Nếu 1 trong 2 gặp sự cố, AZ còn lại vẫn hoạt động bình thường \-\> Đây là HA\.<br/> 4\. Các Services hỗ trợ HA:<br/>   \- ELB: Tự động điều hướng sang AZ còn sống\.<br/>   \- ASG: Tựu động tạo lại máy chủ mới ở AZ khác nếu máy ở AZ cũ bị hỏng\.<br/>   \- RDS Multi\-AZ: Tự động đồng bộ dữ liệu và chuyển đổi node chính khi có sự cố\.
 > align=`left`
@@ -479,6 +487,18 @@
 ###### Gateway Load Balancer \(GWLB\)
 
 ####### \- Hoạt động tại: Tầng 3 \(Network Layer\)\.<br/>\- Đặc điểm: Dùng để triển khai và quản lý các thiết bị bảo mật bên thứ 3\.<br/>\- Phù hợp: Khi bạn muốn kiểm soát toàn bộ traffic ra/vào khỏi VPC qua một lớp bảo mật chuyên dụng\.
+> align=`left`
+
+
+##### Tính năng ngoài lề
+
+###### Sticky Session \(Session Affinity\)<br/>   \- Khái niệm: Công cụ giải quyết vấn đề cho những application lưu trữ session bằng cách đảm bảo mọi request từ người dùng đó<br/>                trong một khoảng thời gian nhất định sẽ luôn đi vào 1 máy chủ\.<br/>   \- Cơ chế: Để nhận diện người dùng, LB sử dụng Cookie\.<br/>   \- Phân loại:<br/>     ~ Duration\-based Sticky Session \(Dựa trên thời gian\)<br/>     ~ Application\-based Sticky Session \(Dựa trên ứng dụng\)
+> align=`left`
+
+
+###### Cross\-Zone Load Balancing
+
+###### Connection Draining<br/>   \- Khái niệm: Là một tính năng của LB giúp thu hồi các Instance bị đưa ra khỏi danh sách phục vụ mà không bị ngắt kết nối đột ngột\.<br/>     ~ Ngừng gửi request đến EC2 đó\.<br/>     ~ Cho phép các request đang xử lý dở có thêm thời gian để hoàn tất và trả kết quả về cho người dùng,
 > align=`left`
 
 
