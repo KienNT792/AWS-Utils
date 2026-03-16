@@ -427,20 +427,14 @@
 
 
 ### Scalability
-> collapsed=`true`
-
 
 #### Vertical Scalability
-> collapsed=`true`
-
 
 ##### 1\. Khái niệm: Vertical Scalability là quá trình tăng cường sức mạnh cho Single Instance bằng cách bổ sung thêm phần cứng<br/>2\. Khi nào nên chọn Vertical Scalability:<br/>   \- Non\-distribution application\.<br/>   \- Quản trị đơn giản<br/>   \- Dev/Test Env
 > align=`left`
 
 
 #### Horizontal Scalability
-> collapsed=`true`
-
 
 ##### 1\. Khái niệm: Horizontal Scalability là khả năng tăng cường sức mạnh hệ thống bằng cách bổ sung thêm nhiều Instances\.<br/>2\. Các thành phần bắt buộc:<br/>   \- Load Balancer \(ELB\): Điểm đầu mối trực tiếp nhận traffic và phân phối đều cho các máy chủ mới\.<br/>   \- Auto Scaling Group \(ASG\): Tự động ra quyết định khi nào cần thêm máy, khi nào cần bớt máy dựa trên các metrics của CPU, RAM, Requests\.<br/>   \- Stateless Architecture: Các máy chủ không nên lưu dữ liệu người dùng \(như session\) trực tiếp trên ổ cứng cục bộ, vì request tiếp<br/>                             theo của người dùng có thể bay sang một máy chủ hoàn toàn khác\.
 > align=`left`
@@ -455,14 +449,20 @@
 
 
 ### Elastic Load Balancer
+> collapsed=`true`
+
 
 #### Tổng quan về Load Balancer<br/>1\. Khái niệm: Load Balancer là một thiết bị hoặc 1 phần mềm đóng vai trò là điểm tiếp nhận duy nhất cho các truy cập cả người dùng\. Sau đó, nó sẽ phân phối<br/>              các truy cập này đến một nhóm máy chủ ở phía sau \(Backend Server Pool\)\.<br/>   \- Mục tiêu: Đảm bảo không có máy chủ nào quá tải trong khi các máy chủ khác rảnh rỗi\.<br/>   \- Điểm truy cập dy nhất: Người dùng chỉ cần kết nối tới 1 địa chỉ IP hoặc tên miền duy nhất của LB, thay vì phải biết địa chỉ của từng máy chủ chủ\.<br/><br/>2\. Tại sao lại cần LB?<br/>   \- HA: Nếu 1 server bị hỏng, LB sẽ nhận biết và tự động ngừng gửi khách đến server đó và điều phối qua các server còn sống\.<br/>   \- Scalability: Có thể dễ dàng thêm/bớt server vào hệ thống mà người dùng không hề biết và không bị gián đoạn dịch vụ\.<br/>   \- Security: LB che giấu địa chỉ IP thật của các máy chủ bên trong, giúp ngăn chặn các cuộc tấn công trực tiếp\.<br/>   \- Health Checks: LB liên tục request đến các máy chủ, nếu một máy chủ phản hồi chậm hoặc báo lỗi, nó sẽ bị tạm dừng nhận việc\.<br/><br/>3\. Các thức hoạt động:<br/>   \- Round Robin: Gửi lần lượt cho từng máy chủ\.<br/>   \- Least Connection: Gửi đến máy chủ nào đang có ít kết nối đang xử lý nhất\.<br/>   \- IP Hash: Dựa vào IP người dùng để quyết định máy chủ\.
 > align=`left`
 
 
 #### Load Balancer trên AWS\.
+> collapsed=`true`
+
 
 ##### Thành phần cốt lõi
+> collapsed=`true`
+
 
 ###### Listeners: Quy định giao thức và port mà LB lắng nghe \(VD: HTTP trên cổng 80 hoặc HTTPS trên cổng 443\)\.
 
@@ -471,26 +471,36 @@
 ###### Rules: Các quy tắc quyết định request nào sẽ đi vào Target Group nào\.
 
 ##### Phân Loại
+> collapsed=`true`
+
 
 ###### Application Load Balancer \(ALB\)
+> collapsed=`true`
+
 
 ####### \- Hoạt động tại: Tầng 7 \(Application Layer \- HTTP/HTTPS\)<br/>\- Đặc điểm: Có thể đọc được nội dung gói tin\. Nó có thể điều hướng dựa trên URL Path, hostname, Query String, Headers<br/>\- Phù hợp: Ứng dụng web hiện tại, Microservices, Container \(Docker/ECS\)\.
 > align=`left`
 
 
 ###### Network Load Balancer \(NLB\)
+> collapsed=`true`
+
 
 ####### \- Hoạt động tại: Tầng 4 \(Transport Layer \- TCP/UDP/TLS\)\.<br/>\- Đặc điểm: Cực nhanh, độ trễ cực thấp \(ms\)\. Có thể xử lý hàng triệu request/s và hỗ trợ Static IP\.<br/>\- Phù hợp: Game Online, Ứng dụng tài chính, Livestream hoặc khi cần IP tĩnh để cấu hình Firewall phía khách hàng\.
 > align=`left`
 
 
 ###### Gateway Load Balancer \(GWLB\)
+> collapsed=`true`
+
 
 ####### \- Hoạt động tại: Tầng 3 \(Network Layer\)\.<br/>\- Đặc điểm: Dùng để triển khai và quản lý các thiết bị bảo mật bên thứ 3\.<br/>\- Phù hợp: Khi bạn muốn kiểm soát toàn bộ traffic ra/vào khỏi VPC qua một lớp bảo mật chuyên dụng\.
 > align=`left`
 
 
 ##### Tính năng ngoài lề
+> collapsed=`true`
+
 
 ###### Sticky Session \(Session Affinity\)<br/>   \- Khái niệm: Công cụ giải quyết vấn đề cho những application lưu trữ session bằng cách đảm bảo mọi request từ người dùng đó<br/>                trong một khoảng thời gian nhất định sẽ luôn đi vào 1 máy chủ\.<br/>   \- Cơ chế: Để nhận diện người dùng, LB sử dụng Cookie\.<br/>   \- Phân loại:<br/>     ~ Duration\-based Sticky Session \(Dựa trên thời gian\)<br/>     ~ Application\-based Sticky Session \(Dựa trên ứng dụng\)
 > align=`left`
@@ -503,3 +513,15 @@
 
 
 ### Auto Scaling Group
+
+#### 1\. Khái niệm\.<br/>   \- Trong thực tế, tải của web và app có thể thay đổi<br/>   \- Mục tiêu của ASG là:<br/>     ~ Tăng/Giảm số lượng EC2 theo thực tế\.<br/>     ~ Đảm bảo ta có tối thiểu và tối đa các EC2\.<br/>     ~ Tự động đăng ký EC2 mới vào LB\.<br/>     ~ Tự động tạo mới EC2 để thay thế các con bị xóa trước đó nếu con trước đó có vấn đề\.<br/>   \- ASG hoàn toàn miễn phí\. CHỉ cần cho số lượng EC2 được tạo\.
+> align=`left`
+
+
+#### 2\. ASG Attribute:<br/>   \- A Launch Template:<br/>     ~ AMI \+ Instance Type\.<br/>     ~ EC2 User Data\.<br/>     ~\.\.\.\.<br/>   \- Min Size \+ Max Size \+ Initial Capacity \(Số EC2 tối thiểu/Số EC2 tối đa/Số lượng khởi tạo ban đầu\)\.<br/>   \- Scaling Policy:
+> align=`left`
+
+
+#### 3\. Chiến lược mở rộng \(Scaling Policies\)<br/>   \- Dynamic Scaling:<br/>   \- Scheduled Scaling:<br/>   \- Predict Scaling:<br/><br/>4\. Scaling Cooldowns<br/>   \- Sau khi thực hiện scaling, ASG sẽ trong thời gian đếm ngược \(mặc định là 5p\)\. Trong thời gian này, ASG sẽ không<br/>     tạo thêm hoặc hủy instance để đảm bảo traffic\.
+> align=`left`
+
